@@ -68,6 +68,9 @@ def getSummaryInfo(bag_path):
     return info_dict, topic_list, img_topic_list, start_timestamp, end_timestamp, duration, info_strs
 
 if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print("You should input one bag filepath at least.")
+        exit()
     bag_path = sys.argv[1]
     out_path = bag_path[:bag_path.rfind(".")]+"_extracted.bag"
 
