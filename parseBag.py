@@ -113,11 +113,16 @@ def saveTopicImgs(bag_path, topic_name, start_time, end_time, msg_num, frame_enc
         bridge = CvBridge()
         for topic, msg, t in bag.read_messages():
             cur_time = msg.header.stamp.to_sec()
-            if start_time <= cur_time <= end_time:
+            if cur_time < start_time:
+                pass
+            elif cur_time > end_time:
+                break
+            elif start_time <= cur_time <= end_time:
                 if topic == topic_name:
                     try:
                         cv_img = bridge.imgmsg_to_cv2(msg, target_encoding)
-                        timestr = "%.6f" % msg.header.stamp.to_sec()
+                        timestr = "%.0f" % (msg.header.stamp.to_sec()*1000000000)  # ns(10^-9)
+                        # timestr = "%.6f" % msg.header.stamp.to_sec() # s
                         img_name = timestr + file_type
                         cv2.imwrite(save_path + os.path.sep + img_name, cv_img)
                         counter += 1
@@ -142,7 +147,8 @@ def showTopicImgs(bag_path, topic_name, start_time, end_time, msg_num, frame_rat
                 if topic == topic_name:
                     try:
                         cv_img = bridge.imgmsg_to_cv2(msg, target_encoding)
-                        timestr = "%.6f" % msg.header.stamp.to_sec()
+                        # timestr = "%.0f" % (msg.header.stamp.to_sec()*1000000000)  # ns(10^-9)
+                        timestr = "%.6f" % msg.header.stamp.to_sec() # s
                         cv2.imshow(topic_name, cv_img)
                         cv2.waitKey(int(1000.0 / frame_rate))
                         counter += 1
@@ -343,7 +349,8 @@ if __name__ == "__main__":
                 if frame_save_type[0] != ".":
                     frame_save_type = "." + frame_save_type
                 print("==>Save file format:" + frame_save_type)
-
+                
+                # msg_num有问题
                 saveTopicImgs(bag_path, img_topic_list[input_index]['topic'], input_start_time, input_end_time,
                               img_num_list[input_index], img_encoding_list[input_index], frame_save_path,
                               frame_save_type)

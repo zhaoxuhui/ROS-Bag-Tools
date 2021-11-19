@@ -82,7 +82,7 @@ def getImuTopicInfo(bag_path, imu_topic_list, info_strs):
 def saveTopicIMU(bag_path, topic_name, start_time, end_time, msg_num, save_path, file_type='.csv'):
     out_file_path = save_path + os.path.sep + "imu_data" + file_type
     out_file = open(out_file_path,"w")
-    out_file.write("#timestamp [s],w_RS_S_x [rad s^-1],w_RS_S_y [rad s^-1],w_RS_S_z [rad s^-1],a_RS_S_x [m s^-2],a_RS_S_y [m s^-2],a_RS_S_z [m s^-2]\n")
+    out_file.write("#timestamp [ns],w_RS_S_x [rad s^-1],w_RS_S_y [rad s^-1],w_RS_S_z [rad s^-1],a_RS_S_x [m s^-2],a_RS_S_y [m s^-2],a_RS_S_z [m s^-2]\n")
 
     counter = 0
     with rosbag.Bag(bag_path, 'r') as bag:
@@ -97,7 +97,8 @@ def saveTopicIMU(bag_path, topic_name, start_time, end_time, msg_num, save_path,
                 if topic == topic_name:
                     try:
                         # 按格式保存IMU数据
-                        timestr = "%.6f" % msg.header.stamp.to_sec()
+                        timestr = "%.0f" % (msg.header.stamp.to_sec()*1000000000)  # ns(10^-9)
+                        # timestr = "%.6f" % msg.header.stamp # s
 
                         w_x = msg.angular_velocity.x
                         w_y = msg.angular_velocity.y
