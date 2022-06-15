@@ -83,3 +83,28 @@
 #### d435i_stage2_postprocessing.py
 用于对采集的ROS Bag格式的D435i数据进行解析，得到普通影像、IMU数据和时间戳文件。
 **用法**：Input Format: input_bag_path
+
+#### genBagFromImg.py
+将某个影像序列转换成ROS Bag文件。
+
+* img_dir = sys.argv[1]   # 影像所在文件夹路径
+* img_type = sys.argv[2]  # 影像类型
+* topic_name = sys.argv[3]    # Topic名称
+* bag_path = sys.argv[4]  # 输出Bag路径
+
+#### genBagFromIMU.py
+将IMU数据(EuRoC格式)转换成ROS Bag文件。
+
+* imu_path = sys.argv[1]  # IMU数据文件路径
+* imu_topic_name = sys.argv[2]    # Topic名称
+* bag_path = sys.argv[3]  # 输出Bag路径
+
+#### genBagFromImgAndIMU.py
+将影像序列与IMU数据转换并合并成一个ROS Bag文件。
+
+* img_dir = sys.argv[1]   # 影像所在文件夹路径
+* img_type = sys.argv[2]  # 影像文件类型
+* img_topic_name = sys.argv[3]    # 影像Topic名称
+* imu_path = sys.argv[4]  # IMU文件路径
+* imu_topic_name = sys.argv[5]    # IMU Topic名称
+* bag_path = sys.argv[6]  # Bag文件输出路径
