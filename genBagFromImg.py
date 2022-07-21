@@ -65,7 +65,7 @@ if __name__ == '__main__':
         print(i,'/',len(files))
 
         frame_img = cv2.imread(files[i])
-        timestamp = int(names[i].split(".")[0])/10e8
+        timestamp = int(names[i].split(".")[0])/1e9
         print(timestamp)
 
         ros_ts = rospy.rostime.Time.from_sec(timestamp)
