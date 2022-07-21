@@ -63,7 +63,7 @@ def readIMU(imu_path):
     line = fin.readline().strip()
     while line:
         parts = line.split(",")
-        ts = float(parts[0])/10e8
+        ts = float(parts[0])/1e9
         wx = float(parts[1])
         wy = float(parts[2])
         wz = float(parts[3])
