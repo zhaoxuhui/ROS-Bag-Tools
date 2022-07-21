@@ -108,3 +108,16 @@
 * imu_path = sys.argv[4]  # IMU文件路径
 * imu_topic_name = sys.argv[5]    # IMU Topic名称
 * bag_path = sys.argv[6]  # Bag文件输出路径
+
+#### genBagFromLidar.py
+将多个csv文件保存的点云数据转换成ROS Bag文件，时间单位默认为纳秒(10的9次方)。
+
+* input_dir = sys.argv[1]   # csv所在文件夹路径
+* out_dir = sys.argv[2]  # 输出结果文件夹路径
+
+#### genBagFromCamImuLidar.py
+将相机、IMU、LiDAR数据转换成一个ROS Bag文件，时间单位默认为纳秒(10的9次方)。
+
+* input_dir = sys.argv[1]   # 输入数据文件夹路径
+* out_dir = sys.argv[2]  # 输出结果文件夹路径
+
