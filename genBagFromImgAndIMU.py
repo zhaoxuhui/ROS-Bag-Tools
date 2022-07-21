@@ -65,7 +65,7 @@ def readIMU(imu_path):
     line = fin.readline().strip()
     while line:
         parts = line.split(",")
-        ts = float(parts[0])/10e8
+        ts = float(parts[0])/1e9
         wx = float(parts[1])
         wy = float(parts[2])
         wz = float(parts[3])
@@ -126,7 +126,7 @@ if __name__ == '__main__':
         print('image:',i,'/',len(files))
 
         frame_img = cv2.imread(files[i])
-        timestamp = int(names[i].split(".")[0])/10e8
+        timestamp = int(names[i].split(".")[0])/1e9
         print(timestamp)
 
         ros_ts = rospy.rostime.Time.from_sec(timestamp)
