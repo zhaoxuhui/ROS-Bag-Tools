@@ -121,3 +121,5 @@
 * input_dir = sys.argv[1]   # 输入数据文件夹路径
 * out_dir = sys.argv[2]  # 输出结果文件夹路径
 
+为了更加方便了解代码和测试，整理了一小部分数据放在百度云盘上。链接：https://pan.baidu.com/s/1Ip-oskL9LsZqJ5uJygek2A 
+提取码：1517。
