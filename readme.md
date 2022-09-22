@@ -1,3 +1,5 @@
+不定期更新工具脚本
+
 #### changeBagFramerate.py
 将Bag中的指定Topic转换到目标帧率并输出为新的Bag文件。
 **用法**：Input Format: Input_bag_path topic_name1 target_rate1 [topic_name2 target_rate2 ... ] Output_bag_path
