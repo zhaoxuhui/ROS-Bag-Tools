@@ -66,6 +66,10 @@
 用于保存ROS节点发布的Odometry Topic。
 **用法**：Input Format: subscriber_name topic_name out_path
 
+#### savePathTopic.py
+用于保存ROS节点发布的Path Topic。
+**用法**：Input Format: topic_name out_path
+
 #### savePointStamped.py
 用于保存ROS节点发布的PointStamped Topic。
 **用法**：Input Format: subscriber_name topic_name out_path
